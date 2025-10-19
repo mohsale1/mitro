@@ -1,0 +1,170 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fatherLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:paddingBottom="60dp"
+    android:clipToPadding="false"
+    tools:context=".activities.Home">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 🖼️ Hero Section -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/heroCard"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="6dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/heroViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- 📍 Source & Destination Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/brotherCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/source1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_gray_bg"
+                    android:drawableLeft="@android:drawable/ic_menu_mylocation"
+                    android:drawablePadding="8dp"
+                    android:hint="Source Station"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#666666" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/source1"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/rounded_gray_bg"
+                    android:drawableLeft="@android:drawable/ic_menu_directions"
+                    android:drawablePadding="8dp"
+                    android:hint="Destination Station"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#666666" />
+
+                <Button
+                    android:id="@+id/findDest"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/destination"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#85BCD9"
+                    android:padding="10dp"
+                    android:text="View Path"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 🔹 Quick Search Row -->
+        <HorizontalScrollView
+            android:id="@+id/quickSearchRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="4dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Quick Search Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="#000000"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_mylocation" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="Station A → B"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Add more cards as needed -->
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- 🗺️ Metro Map Section -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sisterCard"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardElevation="6dp">
+
+            <com.jsibbold.zoomage.ZoomageView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/metromap"
+                app:zoomage_animateOnReset="true"
+                app:zoomage_autoCenter="true"
+                app:zoomage_autoResetMode="UNDER"
+                app:zoomage_maxScale="8"
+                app:zoomage_minScale="0.6"
+                app:zoomage_restrictBounds="false"
+                app:zoomage_translatable="true"
+                app:zoomage_zoomable="true" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- 🧩 Footer Card -->
+        <include layout="@layout/footer_card" />
+
+    </LinearLayout>
+</ScrollView>
